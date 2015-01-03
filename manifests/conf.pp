@@ -28,12 +28,12 @@ class ceph::conf (
   $signatures_cluster      = undef,
   $signatures_service      = undef,
   $signatures_sign_msgs    = undef,
-  $pool_default_size       = 3,
-  $pool_default_pg_num     = 1024,
-  $pool_default_pgp_num    = 1024,
-  $pool_default_min_size   = undef,
+  $pool_default_size,
+  $pool_default_pg_num,
+  $pool_default_pgp_num    = $pool_default_pg_num,
+  $pool_default_min_size,
   $pool_default_crush_rule = undef,
-  $journal_size_mb         = 4096,
+  $journal_size_mb,
   $cluster_network         = undef,
   $public_network          = undef,
   $mon_data                = '/var/lib/ceph/mon/mon.$id',
@@ -43,6 +43,13 @@ class ceph::conf (
   $osd_journal_type	       = 'filesystem',
   $mds_data                = '/var/lib/ceph/mds/ceph-$id',
   $mon_timecheck_interval  = undef,
+  $filestore_min_sync_interval,
+  $filestore_max_sync_interval,
+  $filestore_op_thread,
+  $rgw_thread_pool_size,
+  $debug_rgw,
+  $osd_disk_threads,
+  $osd_op_threads,
 ) {
 
   include 'ceph::package'
@@ -66,6 +73,14 @@ class ceph::conf (
   ceph_config {
     'global/keyring':                  value => '/etc/ceph/keyring';
     'global/fsid':                     value => $fsid;
+    'global/filestore_xattr_use_omap': value => 'true';
+    'global/filestore_min_sync_interval': value => $filestore_min_sync_interval;
+    'global/filestore_max_sync_interval': value => $filestore_max_sync_interval;
+    'global/filestore_op_threads':     value => $filestore_op_threads;
+    'global/rgw_thread_pool_size': value => $rgw_thread_pool_size
+    'global/objecter_inflight_op_bytes': value => 1073741824
+    'global/objecter_inflight_ops' :value => 2048
+    'global/debug_rgw': value => $debug_rgw
     'global/osd pool default size':    value => $pool_default_size;
     'global/osd pool default pg num':  value => $pool_default_pg_num;
     'global/osd pool default pgp num': value => $pool_default_pgp_num;
@@ -74,6 +89,8 @@ class ceph::conf (
     'osd/osd data':                    value => $osd_data, tag => 'osd_config';
     'osd/osd mkfs type':               value => 'xfs', tag => 'osd_config';
     'osd/keyring':                     value => "${osd_data}/keyring", tag => 'osd_config';
+    'osd/osd_disk_threads':            value => $osd_disk_threads;
+    'osd/osd_op_threads':              value => $osd_op_threads;
     'mds/mds data':                    value => $mds_data;
     'mds/keyring':                     value => "${mds_data}/keyring";
 

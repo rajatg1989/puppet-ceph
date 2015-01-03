@@ -68,7 +68,7 @@ define ceph::osd::device (
     }
     exec { "mkfs_${devname}":
     	command => "mkfs.xfs -f -d agcount=${::processorcount} -l \
-size=1024m -n size=64k ${part_prefix}2",
+size=2048m -n size=64k ${part_prefix}2",
       unless  => "xfs_admin -l ${part_prefix}2",
       require => [Package['xfsprogs'], Exec["partprobe_${devname}"]],
     }
@@ -148,7 +148,7 @@ size=1024m -n size=64k ${part_prefix}1",
         device  => "$osd_data_device_name",
         atboot  => true,
         fstype  => 'xfs',
-        options => 'rw,noatime,inode64',
+        options => 'rw,noatime,inode64,logbsize=256k',
         pass    => 2,
         require => [
           Exec["mkfs_${devname}"],
