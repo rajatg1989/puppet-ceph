@@ -31,7 +31,7 @@ class ceph::radosgw (
   $keystone_revocation_interval = 600,
   $nss_db_path                  = '/var/lib/ceph/nss',
   $package_ensure               = 'present',
-  $configure_apache             = true,
+  $configure_apache             = false,
   $bind_address                 = '0.0.0.0',
   $fastcgi_ext_script           = '/var/www/s3gw.fcgi',
   $socket                       = '/var/run/ceph/radosgw.sock',
