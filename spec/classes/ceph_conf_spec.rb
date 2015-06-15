@@ -71,6 +71,7 @@ describe 'ceph::conf' do
         :signatures_service      => 'true',
         :signatures_sign_msgs    => 'true',
         :pool_default_pg_num     => 16,
+        :rgw_multipart_min_part_size => 1048576,
         :pool_default_pgp_num    => 16,
         :pool_default_min_size   => 8,
         :pool_default_crush_rule => 1,
