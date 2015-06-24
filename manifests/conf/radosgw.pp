@@ -11,6 +11,7 @@ define ceph::conf::radosgw (
   $socket = '/var/run/ceph/radosgw.sock',
   $logfile = '/var/log/ceph/radosgw.log',
   $ceph_radosgw_listen_ssl = false,
+  $rgw_multipart_min_part_size = 1048576,
 ) {
 
   ceph_config {
@@ -24,6 +25,7 @@ define ceph::conf::radosgw (
     'client.radosgw.gateway/rgw keystone token cache size':  value => $keystone_token_cache_size;
     'client.radosgw.gateway/rgw keystone revocation interval':  value => $keystone_revocation_interval;
     'client.radosgw.gateway/rgw s3 auth use keystone':  value => 'true';
+    'client.radosgw.gateway/rgw multipart min part size':  value => $rgw_multipart_min_part_size;
   }
 
   if $ceph_radosgw_listen_ssl {

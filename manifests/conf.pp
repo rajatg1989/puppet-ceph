@@ -31,7 +31,6 @@ class ceph::conf (
   $pool_default_size       = 3,
   $pool_default_pg_num     = 1024,
   $pool_default_pgp_num    = 1024,
-  $rgw_multipart_min_part_size = 1048576,
   $pool_default_min_size   = undef,
   $pool_default_crush_rule = undef,
   $journal_size_mb         = 4096,
@@ -70,7 +69,6 @@ class ceph::conf (
     'global/osd pool default size':    value => $pool_default_size;
     'global/osd pool default pg num':  value => $pool_default_pg_num;
     'global/osd pool default pgp num': value => $pool_default_pgp_num;
-    'global/rgw multipart min part size': value => $rgw_multipart_min_part_size;
     'mon/mon data':                    value => $mon_data;
     'osd/filestore flusher':           value => false, tag => 'osd_config';
     'osd/osd data':                    value => $osd_data, tag => 'osd_config';
