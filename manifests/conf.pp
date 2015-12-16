@@ -77,10 +77,10 @@ class ceph::conf (
     'global/filestore_min_sync_interval': value => $filestore_min_sync_interval;
     'global/filestore_max_sync_interval': value => $filestore_max_sync_interval;
     'global/filestore_op_threads':     value => $filestore_op_threads;
-    'global/rgw_thread_pool_size': value => $rgw_thread_pool_size
-    'global/objecter_inflight_op_bytes': value => 1073741824
-    'global/objecter_inflight_ops' :value => 2048
-    'global/debug_rgw': value => $debug_rgw
+    'global/rgw_thread_pool_size': value => $rgw_thread_pool_size;
+    'global/objecter_inflight_op_bytes': value => '1073741824';
+    'global/objecter_inflight_ops' :value => '2048';
+    'global/debug_rgw': value => $debug_rgw;
     'global/osd pool default size':    value => $pool_default_size;
     'global/osd pool default pg num':  value => $pool_default_pg_num;
     'global/osd pool default pgp num': value => $pool_default_pgp_num;
