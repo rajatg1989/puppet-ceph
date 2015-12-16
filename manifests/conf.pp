@@ -43,13 +43,13 @@ class ceph::conf (
   $osd_journal_type	       = 'filesystem',
   $mds_data                = '/var/lib/ceph/mds/ceph-$id',
   $mon_timecheck_interval  = undef,
-  $filestore_min_sync_interval,
-  $filestore_max_sync_interval,
-  $filestore_op_thread,
-  $rgw_thread_pool_size,
-  $debug_rgw,
-  $osd_disk_threads,
-  $osd_op_threads,
+  $filestore_min_sync_interval = undef,
+  $filestore_max_sync_interval = undef,
+  $filestore_op_thread = undef,
+  $rgw_thread_pool_size = undef,
+  $debug_rgw = undef,
+  $osd_disk_threads = undef,
+  $osd_op_threads = undef,
 ) {
 
   include 'ceph::package'
