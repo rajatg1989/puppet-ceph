@@ -73,14 +73,14 @@ class ceph::conf (
   ceph_config {
     'global/keyring':                  value => '/etc/ceph/keyring';
     'global/fsid':                     value => $fsid;
-    'global/filestore_xattr_use_omap': value => 'true';
-    'global/filestore_min_sync_interval': value => $filestore_min_sync_interval;
-    'global/filestore_max_sync_interval': value => $filestore_max_sync_interval;
-    'global/filestore_op_threads':     value => $filestore_op_threads;
-    'global/rgw_thread_pool_size': value => $rgw_thread_pool_size;
-    'global/objecter_inflight_op_bytes': value => '1073741824';
-    'global/objecter_inflight_ops' :value => '2048';
-    'global/debug_rgw': value => $debug_rgw;
+    'global/filestore xattr use omap': value => 'true';
+    'global/filestore min sync interval': value => $filestore_min_sync_interval;
+    'global/filestore max sync interval': value => $filestore_max_sync_interval;
+    'global/filestore op threads':     value => $filestore_op_threads;
+    'global/rgw thread pool size': value => $rgw_thread_pool_size;
+    'global/objecter inflight op_bytes': value => '1073741824';
+    'global/objecter inflight ops' :value => '2048';
+    'global/debug rgw': value => $debug_rgw;
     'global/osd pool default size':    value => $pool_default_size;
     'global/osd pool default pg num':  value => $pool_default_pg_num;
     'global/osd pool default pgp num': value => $pool_default_pgp_num;
