@@ -24,7 +24,7 @@ define ceph::conf::radosgw (
     'client.radosgw.gateway/rgw keystone accepted roles':  value => $keystone_accepted_roles;
     'client.radosgw.gateway/rgw keystone token cache size':  value => $keystone_token_cache_size;
     'client.radosgw.gateway/rgw keystone revocation interval':  value => $keystone_revocation_interval;
-    'client.radosgw.gateway/rgw s3 auth use keystone':  value => 'true';
+    'client.radosgw.gateway/rgw s3 auth use keystone':  value => 'false';
     'client.radosgw.gateway/rgw multipart min part size':  value => $rgw_multipart_min_part_size;
   }
 
