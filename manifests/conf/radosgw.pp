@@ -20,7 +20,6 @@ define ceph::conf::radosgw (
     'client.radosgw.gateway/rgw socket path':  value => $socket;
     'client.radosgw.gateway/log file':  value => $logfile;
     'client.radosgw.gateway/rgw keystone url':  value => $keystone_url;
-    'client.radosgw.gateway/rgw keystone admin token':  value => $keystone_admin_token;
     'client.radosgw.gateway/rgw keystone accepted roles':  value => $keystone_accepted_roles;
     'client.radosgw.gateway/rgw keystone token cache size':  value => $keystone_token_cache_size;
     'client.radosgw.gateway/rgw keystone revocation interval':  value => $keystone_revocation_interval;
