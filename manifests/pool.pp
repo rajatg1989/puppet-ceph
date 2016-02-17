@@ -49,6 +49,7 @@ define ceph::pool (
   $pg_num = 64,
   $pgp_num = undef,
   $size = undef,
+  $min_size = undef,
 ) {
 
   if $ensure == present {
@@ -86,7 +87,6 @@ test $(ceph osd pool get ${name} pgp_num | sed 's/.*:\s*//g') -ge ${pgp_num}",
         require => Exec["create-${name}"],
       }
     }
-
     if $size {
       exec { "set-${name}-size":
         command => "/bin/true # comment to satisfy puppet syntax requirements
@@ -95,6 +95,18 @@ ceph osd pool set ${name} size ${size}",
         unless  => "/bin/true # comment to satisfy puppet syntax requirements
 set -ex
 test $(ceph osd pool get ${name} size | sed 's/.*:\s*//g') -eq ${size}",
+        require => Exec["create-${name}"],
+      }
+    }
+    
+  if $min_size {
+      exec { "set-${name}-min_size":
+        command => "/bin/true # comment to satisfy puppet syntax requirements
+set -ex
+ceph osd pool set ${name} min_size ${min_size}",
+        unless  => "/bin/true # comment to satisfy puppet syntax requirements
+set -ex
+test $(ceph osd pool get ${name} min_size | sed 's/.*:\s*//g') -eq ${min_size}",
         require => Exec["create-${name}"],
       }
     }

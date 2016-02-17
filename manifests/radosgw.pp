@@ -60,7 +60,7 @@ class ceph::radosgw (
   ##
 
   Ceph::Auth[$radosgw_id] ~> Service['radosgw']
-  Ceph_config<||> ~> Service['radosgw']
+  Ceph_config<|radosgw_config|> ~> Service['radosgw']
 
   ceph::conf::radosgw { $name:
     keyring                      => $radosgw_keyring_orig,
@@ -72,6 +72,8 @@ class ceph::radosgw (
     keystone_token_cache_size    => $keystone_token_cache_size,
     keystone_revocation_interval => $keystone_revocation_interval,
     nss_db_path                  => $nss_db_path,
+    debug_rgw                    => $debug_rgw,
+    rgw_thread_pool_size         => $rgw_thread_pool_size,
   }
 
   package { 'radosgw':

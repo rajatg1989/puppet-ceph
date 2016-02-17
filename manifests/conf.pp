@@ -74,13 +74,11 @@ class ceph::conf (
     'global/keyring':                  value => '/etc/ceph/keyring';
     'global/fsid':                     value => $fsid;
     'global/filestore xattr use omap': value => 'true';
-    'global/filestore min sync interval': value => $filestore_min_sync_interval;
-    'global/filestore max sync interval': value => $filestore_max_sync_interval;
-    'global/filestore op threads':     value => $filestore_op_threads;
-    'global/rgw thread pool size': value => $rgw_thread_pool_size;
-    'global/objecter inflight op_bytes': value => '1073741824';
-    'global/objecter inflight ops' :value => '2048';
-    'global/debug rgw': value => $debug_rgw;
+    'global/filestore min sync interval': value => $filestore_min_sync_interval, tag => 'osd_config';
+    'global/filestore max sync interval': value => $filestore_max_sync_interval, tag => 'osd_config';
+    'global/filestore op threads':     value => $filestore_op_threads, tag => 'osd_config';
+    'global/objecter inflight op_bytes': value => '1073741824', tag => 'osd_config';
+    'global/objecter inflight ops' :value => '2048', tag => 'osd_config';
     'global/osd pool default size':    value => $pool_default_size;
     'global/osd pool default pg num':  value => $pool_default_pg_num;
     'global/osd pool default pgp num': value => $pool_default_pgp_num;
@@ -89,8 +87,8 @@ class ceph::conf (
     'osd/osd data':                    value => $osd_data, tag => 'osd_config';
     'osd/osd mkfs type':               value => 'xfs', tag => 'osd_config';
     'osd/keyring':                     value => "${osd_data}/keyring", tag => 'osd_config';
-    'osd/osd_disk_threads':            value => $osd_disk_threads;
-    'osd/osd_op_threads':              value => $osd_op_threads;
+    'osd/osd_disk_threads':            value => $osd_disk_threads, tag => 'osd_config';
+    'osd/osd_op_threads':              value => $osd_op_threads, tag => 'osd_config';
     'mds/mds data':                    value => $mds_data;
     'mds/keyring':                     value => "${mds_data}/keyring";
 
