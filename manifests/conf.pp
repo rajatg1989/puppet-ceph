@@ -48,8 +48,15 @@ class ceph::conf (
   $filestore_op_thread = undef,
   $rgw_thread_pool_size = undef,
   $debug_rgw = undef,
+  $debug_mon = undef,
+  $debug_osd = undef,
   $osd_disk_threads = undef,
   $osd_op_threads = undef,
+  $osd_op_num_shards = undef,
+  $osd_op_num_threads_per_shard = undef,
+  $osd_recovery_threads = undef,
+  $osd_disk_thread_ioprio_priority = undef,
+  $osd_disk_thread_ioprio_class = undef,
 ) {
 
   include 'ceph::package'
@@ -83,12 +90,19 @@ class ceph::conf (
     'global/osd pool default pg num':  value => $pool_default_pg_num;
     'global/osd pool default pgp num': value => $pool_default_pgp_num;
     'mon/mon data':                    value => $mon_data;
+    'mon/debug mon':                   value => $debug_mon, tag => 'mon_config';
+    'osd/debug osd':                   value => $debug_osd, tag => 'osd_config';
     'osd/filestore flusher':           value => false, tag => 'osd_config';
     'osd/osd data':                    value => $osd_data, tag => 'osd_config';
     'osd/osd mkfs type':               value => 'xfs', tag => 'osd_config';
     'osd/keyring':                     value => "${osd_data}/keyring", tag => 'osd_config';
-    'osd/osd_disk_threads':            value => $osd_disk_threads, tag => 'osd_config';
-    'osd/osd_op_threads':              value => $osd_op_threads, tag => 'osd_config';
+    'osd/osd disk threads':            value => $osd_disk_threads, tag => 'osd_config';
+    'osd/osd op threads':              value => $osd_op_threads, tag => 'osd_config';
+    'osd/osd op num shards':           value => $osd_op_num_shards, tag => 'osd_config';
+    'osd/osd op num threads per shard': value => $osd_op_num_threads_per_shard, tag => 'osd_config';
+    'osd/osd recovery threads':        value => $osd_recovery_threads, tag => 'osd_config';
+    'osd/osd disk thread ioprio class': value => $osd_disk_thread_ioprio_class, tag => 'osd_config';
+    'osd/osd disk thread ioprio priority': value => $osd_disk_thread_ioprio_priority, tag => 'osd_config'; 
     'mds/mds data':                    value => $mds_data;
     'mds/keyring':                     value => "${mds_data}/keyring";
 

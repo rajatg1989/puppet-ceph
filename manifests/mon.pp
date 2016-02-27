@@ -85,6 +85,8 @@ define ceph::mon (
     require  => Exec['ceph-mon-mkfs'],
   }
 
+  Ceph_config<|tag == 'mon_config'|> ~> Service["ceph-mon.${name}"]
+
   exec { 'ceph-admin-key':
     command => "ceph-authtool /etc/ceph/keyring \
 --create-keyring \

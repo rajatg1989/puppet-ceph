@@ -13,6 +13,7 @@ define ceph::conf::radosgw (
   $ceph_radosgw_listen_ssl = false,
   $rgw_multipart_min_part_size = 1048576,
   $debug_rgw ,
+  $rgw_obj_stripe_size ,
   $rgw_thread_pool_size ,
 ) {
 
@@ -30,6 +31,7 @@ define ceph::conf::radosgw (
 
     'client.radosgw.gateway/rgw thread pool size': value => $rgw_thread_pool_size, tag => 'rgw_config';
     'client.radosgw.gateway/debug rgw': value => $debug_rgw, tag => "radosgw_config";
+    'client.radosgw.gateway/rgw obj stripe size': value => $rgw_obj_stripe_size, tag => "rgw_config"
   }
 
   if $ceph_radosgw_listen_ssl {
