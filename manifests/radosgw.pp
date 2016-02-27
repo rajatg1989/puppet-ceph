@@ -46,6 +46,9 @@ class ceph::radosgw (
   $radosgw_id                   = 'radosgw.gateway',
   $gw_serveradmin_email         = 'root@localhost',
   $gw_server_name               = 'localhost',
+  $debug_rgw,
+  $rgw_obj_stripe_size,
+  $rgw_thread_pool_size,
 ) {
 
   if ! $radosgw_keyring {
@@ -73,6 +76,7 @@ class ceph::radosgw (
     keystone_revocation_interval => $keystone_revocation_interval,
     nss_db_path                  => $nss_db_path,
     debug_rgw                    => $debug_rgw,
+    rgw_obj_stripe_size          => $rgw_obj_stripe_size,
     rgw_thread_pool_size         => $rgw_thread_pool_size,
   }
 
