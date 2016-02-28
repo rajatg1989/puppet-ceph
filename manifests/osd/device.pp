@@ -18,7 +18,7 @@
 
 define ceph::osd::device (
   $osd_journal_type  = 'filesystem',
-  $osd_journal_size  = 2,
+  $osd_journal_size  = undef,
   $autogenerate      = false,
 ) {
 
