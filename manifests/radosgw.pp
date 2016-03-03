@@ -49,6 +49,7 @@ class ceph::radosgw (
   $debug_rgw,
   $rgw_obj_stripe_size,
   $rgw_thread_pool_size,
+  $rgw_bucket_index_shards,
 ) {
 
   if ! $radosgw_keyring {
@@ -78,6 +79,7 @@ class ceph::radosgw (
     debug_rgw                    => $debug_rgw,
     rgw_obj_stripe_size          => $rgw_obj_stripe_size,
     rgw_thread_pool_size         => $rgw_thread_pool_size,
+    rgw_bucket_index_shards      => $rgw_bucket_index_shards,
   }
 
   package { 'radosgw':
