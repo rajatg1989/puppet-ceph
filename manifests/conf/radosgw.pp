@@ -15,6 +15,7 @@ define ceph::conf::radosgw (
   $debug_rgw ,
   $rgw_obj_stripe_size ,
   $rgw_thread_pool_size ,
+  $rgw_bucket_index_shards ,
 ) {
 
   ceph_config {
@@ -30,6 +31,7 @@ define ceph::conf::radosgw (
     'client.radosgw.gateway/rgw multipart min part size':  value => $rgw_multipart_min_part_size, tag => "radosgw_config";
 
     'client.radosgw.gateway/rgw thread pool size': value => $rgw_thread_pool_size, tag => 'rgw_config';
+    'client.radosgw.gateway/rgw override bucket index max shards': value => $rgw_bucket_index_shards, tag => "radosgw_config";
     'client.radosgw.gateway/debug rgw': value => $debug_rgw, tag => "radosgw_config";
     'client.radosgw.gateway/rgw obj stripe size': value => $rgw_obj_stripe_size, tag => "rgw_config"
   }
