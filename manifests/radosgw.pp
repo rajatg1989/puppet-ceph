@@ -50,6 +50,7 @@ class ceph::radosgw (
   $rgw_obj_stripe_size,
   $rgw_thread_pool_size,
   $rgw_bucket_index_shards,
+  $rgw_frontends,
 ) {
 
   if ! $radosgw_keyring {
@@ -80,6 +81,7 @@ class ceph::radosgw (
     rgw_obj_stripe_size          => $rgw_obj_stripe_size,
     rgw_thread_pool_size         => $rgw_thread_pool_size,
     rgw_bucket_index_shards      => $rgw_bucket_index_shards,
+    rgw_frontends                => $rgw_frontends,
   }
 
   package { 'radosgw':
