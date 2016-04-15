@@ -18,6 +18,8 @@ define ceph::conf::radosgw (
   $rgw_bucket_index_shards ,
   $rgw_frontends ,
   $rgw_cors_allowed_origin ,
+  $rgw_keystone_sign_api,
+  $rgw_keystone_token_api,
 ) {
 
   ceph_config {
@@ -26,6 +28,8 @@ define ceph::conf::radosgw (
     'client.radosgw.gateway/rgw socket path':  value => $socket, tag => "radosgw_config";
     'client.radosgw.gateway/log file':  value => $logfile, tag => "radosgw_config";
     'client.radosgw.gateway/rgw keystone url':  value => $keystone_url, tag => "radosgw_config";
+    'client.radosgw.gateway/rgw keystone sign api': value => $rgw_keystone_sign_api, tag => "radosgw_config";
+    'client.radosgw.gateway/rgw keystone token api': value => $rgw_keystone_token_api, tag => "radosgw_config";
     'client.radosgw.gateway/rgw keystone accepted roles':  value => $keystone_accepted_roles, tag => "radosgw_config";
     'client.radosgw.gateway/rgw keystone token cache size':  value => $keystone_token_cache_size, tag => "radosgw_config";
     'client.radosgw.gateway/rgw keystone revocation interval':  value => $keystone_revocation_interval, tag => "radosgw_config";

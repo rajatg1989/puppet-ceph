@@ -52,6 +52,8 @@ class ceph::radosgw (
   $rgw_bucket_index_shards,
   $rgw_frontends,
   $rgw_cors_allowed_origin,
+  $rgw_keystone_sign_api        = 'sign-auth',
+  $rgw_keystone_token_api       = 'token-auth',
 ) {
 
   if ! $radosgw_keyring {
@@ -84,6 +86,8 @@ class ceph::radosgw (
     rgw_bucket_index_shards      => $rgw_bucket_index_shards,
     rgw_frontends                => $rgw_frontends,
     rgw_cors_allowed_origin      => $rgw_cors_allowed_origin,
+    rgw_keystone_sign_api        => $rgw_keystone_sign_api,
+    rgw_keystone_token_api       => $rgw_keystone_token_api,
   }
 
   package { 'radosgw':
