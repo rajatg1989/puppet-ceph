@@ -17,6 +17,7 @@ define ceph::conf::radosgw (
   $rgw_thread_pool_size ,
   $rgw_bucket_index_shards ,
   $rgw_frontends ,
+  $rgw_cors_allowed_origin ,
 ) {
 
   ceph_config {
@@ -35,7 +36,8 @@ define ceph::conf::radosgw (
     'client.radosgw.gateway/rgw override bucket index max shards': value => $rgw_bucket_index_shards, tag => "radosgw_config";
     'client.radosgw.gateway/debug rgw': value => $debug_rgw, tag => "radosgw_config";
     'client.radosgw.gateway/rgw obj stripe size': value => $rgw_obj_stripe_size, tag => "rgw_config";
-    'client.radosgw.gateway/rgw frontends': value => $rgw_frontends, tag => "rgw_config"
+    'client.radosgw.gateway/rgw frontends': value => $rgw_frontends, tag => "rgw_config";
+    'client.radosgw.gateway/rgw cors allowed origin': value => $rgw_cors_allowed_origin, tag => "rgw_config"
   }
 
   if $ceph_radosgw_listen_ssl {
