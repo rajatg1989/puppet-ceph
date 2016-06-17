@@ -91,7 +91,7 @@ class ceph::conf (
     'global/osd pool default pgp num': value => $pool_default_pgp_num;
     'global/max open files':           value => '65536';
     'global/log to syslog':            value => 'true';
-    'global/err to syslog';            value => 'true';
+    'global/err to syslog':            value => 'true';
     'mon/mon data':                    value => $mon_data;
     'mon/debug mon':                   value => $debug_mon, tag => 'mon_config';
     'osd/debug osd':                   value => $debug_osd, tag => 'osd_config';
