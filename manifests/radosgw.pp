@@ -54,6 +54,7 @@ class ceph::radosgw (
   $rgw_cors_allowed_origin,
   $rgw_keystone_sign_api        = 'sign-auth',
   $rgw_keystone_token_api       = 'token-auth',
+  $rgw_multipart_part_upload_limit,
 ) {
 
   if ! $radosgw_keyring {
@@ -88,6 +89,7 @@ class ceph::radosgw (
     rgw_cors_allowed_origin      => $rgw_cors_allowed_origin,
     rgw_keystone_sign_api        => $rgw_keystone_sign_api,
     rgw_keystone_token_api       => $rgw_keystone_token_api,
+    rgw_multipart_part_upload_limit  => $rgw_multipart_part_upload_limit,
   }
 
   package { 'radosgw':
